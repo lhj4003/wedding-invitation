@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="호재와 세인의 결혼식에 초대합니다." />
+  <meta property="og:title" content="호재와 세인의 결혼식에 초대합니다" />
+  <meta property="og:description" content="2026년 10월 24일 토요일 오후 1시" />
+  <meta property="og:image" content="./images/main.jpg" />
+  <title>호재 ♥ 세인 결혼합니다</title>
+
+  <style>
+    :root {
+      --bg: #fbf7f2;
+      --card: #fffdf9;
+      --text: #2f2a26;
+      --muted: #7e746c;
+      --line: #eadfd4;
+      --accent: #9f7b63;
+      --accent-dark: #6f4f3d;
+      --shadow: 0 18px 45px rgba(80, 55, 35, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #fffaf5 0%, #fbf7f2 45%, #fffdf9 100%);
+      min-height: 100vh;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.03);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 720px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      background: #eee;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.06) 15%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.58) 100%);
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 0 28px 56px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.35);
+    }
+
+    .hero-text .label {
+      letter-spacing: 0.22em;
+      font-size: 12px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .hero-text h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 38px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-text .date {
+      margin-top: 18px;
+      font-size: 16px;
+    }
+
+    section {
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 0 0 26px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--accent-dark);
+    }
+
+    .message {
+      font-size: 16px;
+      color: #4a413b;
+      white-space: pre-line;
+    }
+
+    .names {
+      margin-top: 36px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      font-size: 16px;
+    }
+
+    .names strong {
+      font-size: 19px;
+      color: var(--accent-dark);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-row {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-row:last-child { border-bottom: 0; }
+
+    .info-row .k {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .info-row .v {
+      display: block;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--accent-dark);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1 / 1.2;
+      object-fit: cover;
+      border-radius: 18px;
+      cursor: pointer;
+      background: #eee;
+    }
+
+    .map-box {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: #eee;
+    }
+
+    .map-placeholder {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: var(--muted);
+      background:
+        linear-gradient(45deg, rgba(159,123,99,0.08) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(159,123,99,0.08) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(159,123,99,0.08) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(159,123,99,0.08) 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+    }
+
+    .location-text {
+      margin-top: 20px;
+      color: #4a413b;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    .account-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .account-item {
+      text-align: left;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .account-item .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .account-item .who {
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .copy-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: #f3ebe4;
+      color: var(--accent-dark);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .rsvp-form {
+      display: grid;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .rsvp-form label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .rsvp-form input,
+    .rsvp-form textarea,
+    .rsvp-form select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+
+    .rsvp-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .notice {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .footer {
+      padding: 46px 24px 70px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0,0,0,0.78);
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      width: 100%;
+      max-width: 720px;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(20px);
+      z-index: 30;
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(47,42,38,0.92);
+      color: #fff;
+      transition: 0.25s ease;
+      font-size: 14px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 380px) {
+      .hero { min-height: 620px; }
+      .hero-text h1 { font-size: 32px; }
+      section { padding: 56px 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <!-- 수정: images/main.jpg를 대표 사진으로 교체 -->
+    <header class="hero">
+      <img src="./images/main.jpg" alt="웨딩 대표 사진" loading="eager" onerror="this.style.display='none'" />
+      <div class="hero-text">
+        <div class="label">WEDDING INVITATION</div>
+        <h1>Hojae & Jimin</h1>
+        <div class="date">2026. 10. 24. SAT 1:00 PM</div>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">초대합니다</h2>
+      <p class="message">서로의 가장 좋은 친구가 되어
+같은 방향을 바라보며 걸어가려 합니다.
+
+소중한 분들을 모시고
+저희의 시작을 함께 나누고 싶습니다.</p>
+
+      <div class="names">
+        <div>이철수 · 김영희의 아들 <strong>호재</strong></div>
+        <div>박민수 · 최은영의 딸 <strong>세인</strong></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">예식 안내</h2>
+      <div class="card">
+        <div class="info-row">
+          <span class="k">날짜</span>
+          <span class="v">2026년 10월 24일 토요일</span>
+        </div>
+        <div class="info-row">
+          <span class="k">시간</span>
+          <span class="v">오후 1시</span>
+        </div>
+        <div class="info-row">
+          <span class="k">장소</span>
+          <span class="v">웨딩홀 그랜드볼룸 3층</span>
+        </div>
+        <div class="buttons">
+          <a class="btn primary" href="tel:010-0000-0000">신랑 연락</a>
+          <a class="btn" href="tel:010-1111-1111">신부 연락</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery">
+        <!-- 수정: 실제 사진 파일명으로 교체. 사진은 webp/jpg 권장 -->
+        <img src="./images/photo1.jpg" alt="웨딩 사진 1" loading="lazy" />
+        <img src="./images/photo2.jpg" alt="웨딩 사진 2" loading="lazy" />
+        <img src="./images/photo3.jpg" alt="웨딩 사진 3" loading="lazy" />
+        <img src="./images/photo4.jpg" alt="웨딩 사진 4" loading="lazy" />
+        <img src="./images/photo5.jpg" alt="웨딩 사진 5" loading="lazy" />
+        <img src="./images/photo6.jpg" alt="웨딩 사진 6" loading="lazy" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">오시는 길</h2>
+      <div class="map-box">
+        <!-- 무료/간단 버전: 지도 이미지를 넣거나 아래 버튼으로 카카오맵 이동 -->
+        <div class="map-placeholder">지도 영역<br />카카오맵 링크 또는 지도 이미지로 교체 가능</div>
+      </div>
+
+      <div class="location-text">
+        <strong>웨딩홀 그랜드볼룸 3층</strong><br />
+        서울특별시 강남구 테헤란로 000<br /><br />
+        지하철 2호선 ○○역 3번 출구 도보 5분<br />
+        주차 2시간 무료
+      </div>
+
+      <div class="buttons">
+        <!-- 수정: 실제 카카오맵/네이버지도 링크로 교체 -->
+        <a class="btn primary" href="https://map.kakao.com" target="_blank" rel="noopener">카카오맵</a>
+        <a class="btn" href="https://map.naver.com" target="_blank" rel="noopener">네이버지도</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">마음 전하실 곳</h2>
+      <div class="account-list">
+        <div class="account-item">
+          <div class="top">
+            <span class="who">신랑 측</span>
+            <button class="copy-btn" data-copy="국민은행 123456-78-900000 이호재">복사</button>
+          </div>
+          국민은행 123456-78-900000<br />예금주 이호재
+        </div>
+
+        <div class="account-item">
+          <div class="top">
+            <span class="who">신부 측</span>
+            <button class="copy-btn" data-copy="신한은행 110-000-000000 김세인">복사</button>
+          </div>
+          신한은행 110-000-000000<br />예금주 김세인
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">참석 의사 전달</h2>
+      <div class="card">
+        <!-- 무료형: 서버 없이 입력 내용을 카카오톡/문자로 보내는 방식 -->
+        <form class="rsvp-form" id="rsvpForm">
+          <div>
+            <label for="guestName">성함</label>
+            <input id="guestName" name="guestName" type="text" placeholder="예: 홍길동" required />
+          </div>
+
+          <div>
+            <label for="side">구분</label>
+            <select id="side" name="side">
+              <option value="신랑 측">신랑 측</option>
+              <option value="신부 측">신부 측</option>
+              <option value="공통 지인">공통 지인</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="attend">참석 여부</label>
+            <select id="attend" name="attend">
+              <option value="참석합니다">참석합니다</option>
+              <option value="아쉽지만 참석이 어렵습니다">아쉽지만 참석이 어렵습니다</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="count">참석 인원</label>
+            <input id="count" name="count" type="number" min="1" value="1" />
+          </div>
+
+          <div>
+            <label for="memo">전하실 말</label>
+            <textarea id="memo" name="memo" placeholder="축하 메시지나 전달사항을 적어주세요."></textarea>
+          </div>
+
+          <button class="btn primary" type="submit">문자로 전달하기</button>
+        </form>
+        <p class="notice">서버 없이 무료로 쓰는 방식입니다. 버튼을 누르면 입력 내용이 문자 앱으로 열립니다.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      함께해 주셔서 감사합니다.<br />
+      Hojae & Jimin
+    </footer>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img id="lightboxImage" src="" alt="확대 사진" />
+  </div>
+
+  <div class="toast" id="toast">복사되었습니다</div>
+
+  <script>
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1600);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('복사되었습니다');
+      } catch (error) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        textarea.remove();
+        showToast('복사되었습니다');
+      }
+    }
+
+    document.querySelectorAll('.copy-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        copyText(button.dataset.copy);
+      });
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+
+    document.querySelectorAll('.gallery img').forEach((img) => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+    });
+
+    document.getElementById('rsvpForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('guestName').value.trim();
+      const side = document.getElementById('side').value;
+      const attend = document.getElementById('attend').value;
+      const count = document.getElementById('count').value;
+      const memo = document.getElementById('memo').value.trim();
+
+      const message = `[모바일 청첩장 참석 회신]\n성함: ${name}\n구분: ${side}\n참석 여부: ${attend}\n참석 인원: ${count}명\n전하실 말: ${memo || '-'} `;
+
+      // 수정: 받을 사람 전화번호를 신랑 또는 신부 번호로 변경
+      const phoneNumber = '01000000000';
+      window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
+    });
+  </script>
+</body>
+</html>
